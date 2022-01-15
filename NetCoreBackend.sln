@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{ED903D33-DE2E-4CA3-979A-4BE8BE3B1561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{ED903D33-DE2E-4CA3-979A-4BE8BE3B1561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{0C2C4317-2946-4094-AAE5-DAB35C1FE9C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{0C2C4317-2946-4094-AAE5-DAB35C1FE9C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{56FC884C-5B59-4648-A41E-4524D99F4DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{56FC884C-5B59-4648-A41E-4524D99F4DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{B853EA3F-B447-4298-A246-2A2B494B3F42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{B853EA3F-B447-4298-A246-2A2B494B3F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{C8DC8E0A-ED81-4ABB-9237-A301F13703B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B853EA3F-B447-4298-A246-2A2B494B3F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B853EA3F-B447-4298-A246-2A2B494B3F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B853EA3F-B447-4298-A246-2A2B494B3F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8DC8E0A-ED81-4ABB-9237-A301F13703B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8DC8E0A-ED81-4ABB-9237-A301F13703B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8DC8E0A-ED81-4ABB-9237-A301F13703B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8DC8E0A-ED81-4ABB-9237-A301F13703B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
