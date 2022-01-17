@@ -10,7 +10,6 @@ namespace Business.Abstract
     {
         // tablo icin kullanilacak metotlarin imzalari belirtilir
         // metotlar burada ozellestirilir
-
         IDataResult<List<Product>> GetAll();
         IDataResult<List<Product>> GetAllByCategoryId(int id);
         IResult Add(Product product);
