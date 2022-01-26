@@ -10,6 +10,6 @@ namespace Core.Utilities.Result
         //set etmeme sebebimiz newleme yapmamak
         //kullanicinin kafasina gore mesaj girmesini engellemek
         bool Success { get; }
-        string Messages { get; }
+        string Message { get; }
     }
 }

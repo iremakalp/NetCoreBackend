@@ -10,13 +10,13 @@ namespace Core.Utilities.Result
         // this deme sebebi ovveride edilen constructori calistirmak
         public Result(bool success, string message):this(success)
         {
-            Messages = message;
+            Message = message;
         }
         public Result(bool success)
         {
             Success = success;
         }
         public bool Success { get; }
-        public string Messages { get; }
+        public string Message { get; }
     }
 }
