@@ -24,6 +24,8 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        // Cross Cutting Concerns
+        // AOP--> 
         //[ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
