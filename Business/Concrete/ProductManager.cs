@@ -1,13 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -26,7 +25,7 @@ namespace Business.Concrete
 
         // Cross Cutting Concerns
         // AOP--> 
-        //[ValidationAspect(typeof(ProductValidator))]
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
             //IResult result=BusinessRules.Run(CheckIfProductNameExists(product.ProductName));
@@ -42,14 +41,12 @@ namespace Business.Concrete
             var result = _productDal.GetAll();
             return new SuccessDataResult<List<Product>>(result);
         }
-        // kategori id sine gore listeleme
         public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
         {
             var result = _productDal.GetAll(p => p.CategoryId == categoryId);
             return new SuccessDataResult<List<Product>>(result);
         }
 
-        // stok adedine gore listeleme
         public IDataResult<List<Product>> GetProductByStock(decimal min, decimal max)
         {
             var result = _productDal.GetAll(p => p.Stock >= min && p.Stock <= max);
