@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
+using Core.Aspects.Autofac.Transaction;
 
 namespace Business.Concrete
 {
@@ -25,7 +26,7 @@ namespace Business.Concrete
 
         // Cross Cutting Concerns
         // AOP--> 
-        [ValidationAspect(typeof(ProductValidator))]
+        [ValidationAspect(typeof(ProductValidator),Priority = 1)]
         public IResult Add(Product product)
         {
             //IResult result=BusinessRules.Run(CheckIfProductNameExists(product.ProductName));
@@ -57,6 +58,13 @@ namespace Business.Concrete
         {
             var result = _productDal.GetProductDetails();
             return new SuccessDataResult<List<ProductDetailDto>>(result);
+        }
+        [TransactionScopeAspect]
+        public IResult TransactionalOperation(Product product)
+        {
+            _productDal.Update(product);
+            //_productDal.Add(product);
+            return new SuccessResult(Messages.productAdded);
         }
         //private IResult CheckIfProductNameExists(string productName)
         //{

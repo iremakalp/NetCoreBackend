@@ -14,5 +14,6 @@ namespace Business.Abstract
         IDataResult<List<Product>> GetAllByCategoryId(int id);
         IResult Add(Product product);
         IDataResult<List<Product>> GetProductByStock(decimal min, decimal max);
+        IResult TransactionalOperation(Product product);
     }
 }
