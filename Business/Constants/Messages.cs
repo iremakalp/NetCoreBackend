@@ -18,5 +18,6 @@ namespace Business.Constants
         public static string UserAlreadyExists="Kullanıcı mevcut";
         public static string UserAdded="Kullanıcı kaydedildi";
         public static string AccessTokenCreated="Access token oluştuurldu";
+
     }
 }
