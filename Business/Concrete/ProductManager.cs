@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Transaction;
 
 namespace Business.Concrete
@@ -29,11 +30,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductValidator),Priority = 1)]
         public IResult Add(Product product)
         {
-            //IResult result=BusinessRules.Run(CheckIfProductNameExists(product.ProductName));
-            //if (result!=null) // kurala uymayan bir durum olusmussa
-            //{
-            //    return result;
-            //}      
+                
             _productDal.Add(product);
             return new SuccessResult(Messages.productAdded);
         }
@@ -42,6 +39,7 @@ namespace Business.Concrete
             var result = _productDal.GetAll();
             return new SuccessDataResult<List<Product>>(result);
         }
+        [CacheAspect(duration:1)]
         public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
         {
             var result = _productDal.GetAll(p => p.CategoryId == categoryId);
@@ -66,16 +64,6 @@ namespace Business.Concrete
             //_productDal.Add(product);
             return new SuccessResult(Messages.productAdded);
         }
-        //private IResult CheckIfProductNameExists(string productName)
-        //{
-
-        //    var result = _productDal.GetAll(p => p.ProductName == productName).Any();
-        //    if (result)
-        //    {
-        //        return new ErrorResult(Messages.ProductNameAlreadyExists);
-        //    }
-
-        //    return new SuccessResult();
-        //}       
+           
     }
 }
