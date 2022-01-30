@@ -13,6 +13,7 @@ using Core.Utilities.Interceptors;
 
 namespace Business.DependencyResolvers.Autofac
 {
+    // sadece bu projenin modulleri
     public class AutofacBusinessModule:Module
     {
         protected override void Load(ContainerBuilder builder)
