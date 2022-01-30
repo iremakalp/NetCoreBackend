@@ -28,6 +28,7 @@ namespace Business.Concrete
         // Cross Cutting Concerns
         // AOP--> 
         [ValidationAspect(typeof(ProductValidator),Priority = 1)]
+        [CacheRemoveAspect("IProductService.Get")] // Get metotlarinin cache'lerini sil
         public IResult Add(Product product)
         {
                 
