@@ -9,7 +9,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(p => p.ProductName).NotEmpty();
             RuleFor(p => p.ProductName).Length(2, 30);
-            RuleFor(p => p.Stock).GreaterThan(0);
+            RuleFor(p => p.UnitsInStock).GreaterThan(0);
             RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(10).When(p => p.CategoryId == 1);
             //RuleFor(p => p.ProductName).Must(StartWithA);
 
