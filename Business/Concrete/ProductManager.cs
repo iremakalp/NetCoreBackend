@@ -7,8 +7,14 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
+using System.Threading;
+using Business.BusinessAspect.Autofac;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Transaction;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 
 namespace Business.Concrete
 {
@@ -28,6 +34,7 @@ namespace Business.Concrete
         // Cross Cutting Concerns
         // AOP--> 
         [ValidationAspect(typeof(ProductValidator),Priority = 1)]
+        [SecuredOperation("admin",Priority = 2)]
         [CacheRemoveAspect("IProductService.Get")] // Get metotlarinin cache'lerini sil
         public IResult Add(Product product)
         {
@@ -35,12 +42,16 @@ namespace Business.Concrete
             _productDal.Add(product);
             return new SuccessResult(Messages.productAdded);
         }
+        [PerformanceAspect(5)]
         public IDataResult<List<Product>> GetAll()
         {
+            Thread.Sleep(5000);
             var result = _productDal.GetAll();
             return new SuccessDataResult<List<Product>>(result);
         }
-        [CacheAspect(duration:1)]
+       
+        [CacheAspect(duration:10)]
+        [LogAspect(typeof(FileLogger))]
         public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
         {
             var result = _productDal.GetAll(p => p.CategoryId == categoryId);
@@ -49,7 +60,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetProductByStock(decimal min, decimal max)
         {
-            var result = _productDal.GetAll(p => p.Stock >= min && p.Stock <= max);
+            var result = _productDal.GetAll(p => p.UnitsInStock >= min && p.UnitsInStock <= max);
             return new SuccessDataResult<List<Product>>(result);
         }
 
