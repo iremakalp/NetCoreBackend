@@ -16,7 +16,7 @@ namespace Core.Aspects.Autofac.Caching
             _cacheManager = ServiceTool.ServiceProvider.GetService<ICacheManager>();
         }
 
-        // ekleme,silme guncelleme islemlerinde uygulanmali
+        // ekleme,silme guncelleme islemleri basarili oldugunda uygulanmali
         protected override void OnSuccess(IInvocation invocation)
         {
             _cacheManager.RemoveByPattern(_pattern);
