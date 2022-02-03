@@ -1,5 +1,4 @@
-﻿using Core.Entities.Concrete;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,5 +18,6 @@ namespace Business.Constants
         public static string UserAdded="Kullanıcı kaydedildi";
         public static string AccessTokenCreated="Access token oluştuurldu";
 
+        public static string AuthorizationDenied = "Access token oluşturuldu";
     }
 }
