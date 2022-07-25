@@ -20,7 +20,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             // veritabani baglanti cumlesi
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;
-                        Database=ProjectPreparation2;Trusted_Connection=true");
+                        Database=ProjectPreparation;Trusted_Connection=true");
         }
         
     }

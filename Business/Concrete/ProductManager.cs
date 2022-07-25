@@ -51,7 +51,7 @@ namespace Business.Concrete
         }
        
         [CacheAspect(duration:10)]
-        [LogAspect(typeof(FileLogger))]
+        [LogAspect(typeof(DatabaseLogger))]
         public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
         {
             var result = _productDal.GetAll(p => p.CategoryId == categoryId);
